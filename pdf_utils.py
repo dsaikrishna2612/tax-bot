@@ -9,9 +9,16 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 import requests
 from datetime import datetime
+import os 
 
 # Register a TrueType Unicode font that supports Telugu + ₹
-pdfmetrics.registerFont(TTFont('NotoSansTelugu', r'D:\income tax\tax\font\NotoSansTelugu-VariableFont_wdth,wght.ttf'))
+# pdfmetrics.registerFont(TTFont('NotoSansTelugu', r'D:\income tax\tax\font\NotoSansTelugu-VariableFont_wdth,wght.ttf'))
+
+# Construct relative path to font file
+font_path = os.path.join("font", "NotoSansTelugu-VariableFont_wdth,wght.ttf")
+# Register the font
+pdfmetrics.registerFont(TTFont("NotoSansTelugu", font_path))
+
 
 def round_nearest_10(amount):
     remainder = amount % 10
